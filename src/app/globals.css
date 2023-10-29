@@ -2,26 +2,158 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  scroll-behavior: smooth;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+.max-width {
+  @apply max-w-[1480px] mx-auto 2xl:px-0 xl:px-14 lg:px-10 md:px-8 px-3;
+}
+
+.gradient-text {
+  background: -webkit-linear-gradient(#2f57ef, #b966e7);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.banner-bottom-shade {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
+
+}
+
+.rbt-new-badge {
+  position: relative;
+  display: inline-block;
+  z-index: 1;
+}
+
+.rbt-new-badge-one {
+  color: var(--color-heading);
+  font-size: 16px;
+  font-weight: var(--f-medium);
+  line-height: 1;
+  box-shadow: 0 15px 40px #d2d3e2a1;
+  background: #fff;
+  border-radius: 4px;
+}
+
+/* the styles for the banner label */
+
+.rbt-new-badge-one:before {
+  position: absolute;
+  top: 50%;
+  right: -19px;
+  left: -19px;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  transform: translateY(-50%);
+  height: 45px;
+  width: -moz-calc(100% + 38px);
+  width: calc(100% + 38px);
+  background: rgba(255, 255, 255, 0.5);
+  -webkit-box-shadow: 0 0 29px #d1d3ed63;
+  box-shadow: 0 0 29px #d1d3ed63;
+  z-index: -1;
+  content: "";
+  -webkit-clip-path: polygon(100% 0, 97% 50%, 100% 100%, 0 100%, 3% 50%, 0 0);
+  clip-path: polygon(100% 0, 97% 50%, 100% 100%, 0 100%, 3% 50%, 0 0);
+}
+
+.countup-circle-shape {
+  position: absolute;
+  width: 80%;
+  top: -47%;
+  height: 225px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  background-image: linear-gradient(90deg, #CFA2E8, #637FEA);
+  opacity: 0.09;
+  border-radius: 100%;
+  box-sizing: border-box;
+  padding: 22px;
+}
+
+/* .checkout-gradient {
+  background: #4A1B9C;
+  background: conic-gradient(from 180deg, #4A1B9C, #68BBE5);
+} */
+
+.checkout-gradient {
+  background: conic-gradient(from 0deg, #4A1B9C, #68BBE5);
+  background-size: 200% 200%;
+  /* Increase the size for smoother animation */
+  animation: rotate 4s linear infinite;
+}
+
+@keyframes rotate {
+
+  0%,
+  100% {
+    background-position: 0% 0;
+  }
+
+  25% {
+    background-position: 100% 0;
+  }
+
+  50% {
+    background-position: 100% 100%;
+  }
+
+  75% {
+    background-position: 0 100%;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+/* loader css */
+.lds-facebook {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.lds-facebook div {
+  display: inline-block;
+  position: absolute;
+  left: 8px;
+  width: 16px;
+  background: #b966e7;
+  animation: lds-facebook 0.9s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+
+.lds-facebook div:nth-child(1) {
+  left: 8px;
+  animation-delay: -0.24s;
+}
+
+.lds-facebook div:nth-child(2) {
+  left: 32px;
+  animation-delay: -0.12s;
+}
+
+.lds-facebook div:nth-child(3) {
+  left: 56px;
+  animation-delay: 0;
+}
+
+@keyframes lds-facebook {
+  0% {
+    top: 8px;
+    height: 64px;
+  }
+
+  50%,
+  100% {
+    top: 24px;
+    height: 32px;
+  }
 }
