@@ -8,8 +8,8 @@ import { Toaster } from 'react-hot-toast'
 import { Suspense } from 'react'
 import { Provider } from 'react-redux'
 import { store } from '@/redux/store'
-import Head from 'next/head';
-
+import '@/i18n';
+import "/node_modules/flag-icons/css/flag-icons.min.css";
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
@@ -19,12 +19,12 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" data-theme="light">
       <head>
         <link rel="icon" href="https://i.ibb.co/09CVzCd/PC-Hub-favicon.png" />
       </head>
       <body className={inter.className}>
-        <Suspense fallback="..loading translations">
+        <Suspense>
           <Provider store={store}>
             <AuthProvider>
               {children}

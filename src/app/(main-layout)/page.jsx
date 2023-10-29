@@ -20,7 +20,7 @@ export default function Home() {
       <InstructorSection /> */}
       {/* <InstituteFeedback /> */}
       {/* <LearnerFeedback/> */}
-      {/* <Subscribe /> */}
+      <Subscribe />
     </main>
   );
 }
