@@ -1,6 +1,5 @@
 "use client";
 
-
 import { Inter } from 'next/font/google'
 import './globals.css'
 import AuthProvider from '@/context/AuthProvider'
@@ -11,11 +10,6 @@ import { store } from '@/redux/store'
 import '@/i18n';
 import "/node_modules/flag-icons/css/flag-icons.min.css";
 const inter = Inter({ subsets: ['latin'] })
-
-export const metadata = {
-  title: "PC-HUB",
-  description:"We Are all PC-HUB Family.",
-}
 
 export default function RootLayout({ children }) {
   return (

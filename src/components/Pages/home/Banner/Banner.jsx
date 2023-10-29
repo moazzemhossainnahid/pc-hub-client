@@ -5,7 +5,7 @@ import { FaArrowRight } from "react-icons/fa";
 import Link from "next/link";
 import { getUserInfo } from "@/ults/getUserInfo";
 import { useGetBannerDataQuery } from "@/redux/api/apiSlice";
-import Spinner from "@/components/global/spinner/Spinner";
+import Spinner from "@/components/global/Spinner/Spinner";
 
 const Banner = () => {
   const { email, token } = getUserInfo();
