@@ -1,5 +1,5 @@
 "use client";
-import Spinner from "@/components/common/loader/SmallSpinner";
+import SmallSpinner from "@/components/global/SmallSpinner/SmallSpinner";
 import { useGetSingleUserQuery } from "@/redux/api/apiSlice";
 import { getUserInfo } from "@/ults/getUserInfo";
 import Cookies from "js-cookie";
@@ -9,7 +9,7 @@ import Swal from "sweetalert2";
 const SocialPanel = () => {
   const { email, token } = getUserInfo();
   const { data, isLoading, refetch } = useGetSingleUserQuery({ email, token });
-  if (isLoading) return <Spinner />;
+  if (isLoading) return <SmallSpinner />;
   const user = data?.data;
 
   // handle social update

@@ -1,7 +1,7 @@
-import AboutUsBanner from "@/components/pages/AboutUs/AboutUsBanner";
-import CompanyHistory from "@/components/pages/AboutUs/CompanyHistory";
-import ImageTextLayout from "@/components/pages/AboutUs/ImageTextLayout";
-import OurPrinciple from "@/components/pages/AboutUs/OurPrinciple";
+import AboutUsBanner from "@/components/Pages/AboutUs/AboutUsBanner";
+import CompanyHistory from "@/components/Pages/AboutUs/CompanyHistory";
+import ImageTextLayout from "@/components/Pages/AboutUs/ImageTextLayout";
+import OurPrinciple from "@/components/Pages/AboutUs/OurPrinciple";
 import React from "react";
 
 export const metadata = {
