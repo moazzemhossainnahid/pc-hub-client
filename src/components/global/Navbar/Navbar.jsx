@@ -114,7 +114,7 @@ const Navbar = ({ currentLanguageCode, languages }) => {
                 className="px-3 py-2 mx-2 hover:text-accent cursor-pointer font-medium text-base"
               >
                 <NavLink
-                  activeClassName="text-accent "
+                  activeClassName="text-accent"
                   href={
                     user?.role == "instructor" || user?.role == "super_admin"
                       ? "/admin/dashboard"
@@ -147,7 +147,7 @@ const Navbar = ({ currentLanguageCode, languages }) => {
             </div>
           </div>
         ) : (
-          <Link href="/login">
+          <Link href="/signin">
             <div className="px-5 lg:px-8 py-1.5 font-semibold text-white rounded-md bg-gradient-to-r from-primary via-secondary to-accent hover:bg-gradient-to-l duration-500 transition-all cursor-pointer">
               Login
             </div>

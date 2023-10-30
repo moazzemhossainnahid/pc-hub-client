@@ -7,7 +7,7 @@ const Subscribe = () => {
           <h1 className="text-lg lg:text-2xl font-bold text-secondary">
             Subscribe
           </h1>
-          <p className="text-lg lg:text-2xl text-secondary mt-2">For The Next Course Update</p>
+          <p className="text-lg lg:text-2xl text-secondary mt-2">For Next Update in Our Web App</p>
         </div>
         <div className="h-[30%] w-full md:min-w-[348px] md:w-[30%] rounded bg-white flex items-center p-1 ">
             <input type="email" className=" h-full outline-none grow px-3 w-full" placeholder="Your E-mail"></input>

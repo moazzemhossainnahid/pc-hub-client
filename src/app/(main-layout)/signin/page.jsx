@@ -1,0 +1,163 @@
+"use client";
+
+import InputField from "@/components/Forms/InputField";
+import jwtTokenDecoder from "@/hooks/jwtTokenDecoder";
+import setCookies from "@/hooks/setCookies";
+// import userSingInSignUpSuccess from "@/hooks/userSingInSignUpSuccess";
+import { useUserLoginMutation } from "@/redux/api/apiSlice";
+import { signIn } from "next-auth/react";
+import Image from "next/image";
+import Link from "next/link";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
+import { FcGoogle } from "react-icons/fc";
+import Swal from "sweetalert2";
+
+const Signin = () => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const token = searchParams.get("token");
+  if (token) {
+    setCookies(token);
+    router.push("/");
+  }
+
+  const [userLogin, { error }] = useUserLoginMutation();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = async (data) => {
+    try {
+      const result = await userLogin({ data }).unwrap();
+      // console.log(result);
+
+      if (result.success) {
+        const token = result?.data?.accessToken;
+        if (token) {
+          const decode = await jwtTokenDecoder(token);
+
+          const credentials = {
+            email: decode?.email,
+            password: data.password,
+            role: decode?.role,
+            token,
+            redirect: false,
+          };
+
+          const signInResult = await signIn("credentials", credentials);
+
+          await setCookies(token);
+
+          if (signInResult.error) {
+            router.push('/signin')
+          } else {
+            Swal.fire({
+              icon: "success",
+              title: "",
+              text: "You are successfully logged in",
+              showConfirmButton: false,
+              timer: 1500,
+            })
+            router.push("/");
+          }
+        }
+      }
+    } catch (error) {
+      // console.log(error);
+
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: `${error.data.message}`,
+      });
+    }
+  };
+
+  return (
+    <div className="bg-white flex lg:flex-row flex-col gap-10 items-center justify-evenly py-20">
+      <div>
+        <Image
+          src="auth/Signin.svg"
+          width={600}
+          height={600}
+          alt="Sign Up Image"
+        />
+      </div>
+
+      <div className="bg-gray-50 w-96 lg:w-[500px] shadow-xl border border-gray-100 rounded-xl p-5">
+        <h1 className="text-3xl font-medium">স্বাগতম</h1>
+
+        <div className="pt-3">
+          <button
+            onClick={() =>
+              signIn("google", {
+                callbackUrl: "https://dminstitutebd.vercel.app/",
+              })
+            }
+            className="flex items-center mb-2 justify-center transition ease-in-out delay-50 px-3 py-2.5 space-x-2 bg-white border border-slate-600 rounded-md hover:bg-primary/70 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-600 focus:ring-opacity-50 w-full hover:text-gray-100 text-gray-700"
+          >
+            <FcGoogle className="text-2xl" />
+            <span className="font-medium">গুগল দিয়ে লগইন করুন </span>
+          </button>
+          <p className="py-3 text-center">অথবা</p>
+        </div>
+
+        <h3 className="py-3">ইমেইল এবং পাসওয়ার্ড দিয়ে লগইন করুন</h3>
+        <form className="space-y-5 mt-5" onSubmit={handleSubmit(onSubmit)}>
+          {/* -------- Company Email  -------------*/}
+          <InputField
+            label=" আপনার ইমেল"
+            id="email"
+            placeholder="এখানে আপনার ইমেল'টি লিখুন"
+            type="email"
+            register={register}
+            errors={errors}
+          />
+          <p className="text-red-500 italic text-sm">
+            {error?.data?.message.includes("User does not exist")
+              ? " সঠিক ইমেইল দিন"
+              : ""}
+          </p>
+          {/* -------------  password ---------- */}
+          <InputField
+            label="আপনার পাসওয়ার্ড"
+            id="password"
+            placeholder="এখানে পাসওয়ার্ড লিখুন"
+            type="password"
+            register={register}
+            errors={errors}
+          />
+          <p className="text-red-500 italic text-sm">
+            {error?.data?.message.includes("Password does not match")
+              ? "সঠিক পাসওয়ার্ড দিন"
+              : ""}
+          </p>
+          <div className="">
+            <Link
+              href=""
+              className="font-medium text-blue-900 hover:bg-blue-300 rounded-md p-2"
+            >
+              পাসওয়ার্ড ভুলে গেছেন ?
+            </Link>
+          </div>
+
+          <button className="text-center w-full bg-primary hover:bg-secondary rounded-md text-white py-3 font-medium">
+            লগইন
+          </button>
+          <Link
+            href="/signup"
+            className="text-sm text-blue-900 hover:text-accent rounded-md block mt-4"
+          >
+            নতুন একাউন্ট খুলুন
+          </Link>
+        </form>
+      </div>
+    </div>
+  );
+};
+
+export default Signin;
