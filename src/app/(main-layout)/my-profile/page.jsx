@@ -1,5 +1,5 @@
 "use client";
-import Spinner from "@/components/global/spinner/Spinner";
+import Spinner from "@/components/global/Spinner/Spinner";
 import { useGetSingleUserQuery } from "@/redux/api/apiSlice";
 import { getUserInfo } from "@/ults/getUserInfo";
 import Image from "next/image";
