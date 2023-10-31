@@ -44,7 +44,7 @@ export const authOptions = {
         };
         try {
           const response = await axios.post(
-            "https://lms-server-sigma.vercel.app/api/v1/auth/provider-signup",
+            "https://pc-hub.vercel.app/api/v1/auth/provider-signup",
             userData,
             {
               headers: {
@@ -54,7 +54,7 @@ export const authOptions = {
           );
 
           const token = response?.data?.data?.accessToken;
-          const callbackUrl = `https://dminstitutebd.vercel.app/login?token=${token}`;
+          const callbackUrl = `https://pc-hub.vercel.app/login?token=${token}`;
           return callbackUrl;
           
         } catch (error) {
@@ -65,7 +65,7 @@ export const authOptions = {
     },
   },
   pages: {
-    signIn: "/login",
+    signIn: "/signin",
   },
 };
 

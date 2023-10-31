@@ -86,7 +86,7 @@ const SignUp = () => {
           <button
             onClick={() =>
               signIn("google", {
-                callbackUrl: "https://dminstitutebd.vercel.app/",
+                callbackUrl: "https://pc-hub.vercel.app/",
               })
             }
             className="flex items-center mb-2 justify-center transition ease-in-out delay-50 px-3 py-2.5 space-x-2 bg-white border border-slate-600 rounded-md hover:bg-primary/70 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-600 focus:ring-opacity-50 w-full hover:text-gray-100 text-gray-700"
