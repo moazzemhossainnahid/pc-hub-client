@@ -1,4 +1,5 @@
 "use client";
+
 import { useGetSingleUserQuery } from "@/redux/api/apiSlice";
 import routeData from "@/temp-data/route-data/routeData";
 import { getUserInfo } from "@/ults/getUserInfo";
@@ -63,8 +64,8 @@ const Navbar = ({ currentLanguageCode, languages }) => {
         <button
           onClick={handleToggleMenu}
           className={`${menuIsOpen
-              ? "fixed top-0 left-0 w-screen h-screen bg-black bg-opacity-50 md:hidden z-50"
-              : "hidden"
+            ? "fixed top-0 left-0 w-screen h-screen bg-black bg-opacity-50 md:hidden z-50"
+            : "hidden"
             }`}
         ></button>
         {/* logo here */}
@@ -80,8 +81,8 @@ const Navbar = ({ currentLanguageCode, languages }) => {
         {/* nav */}
         <ul
           className={`${menuIsOpen
-              ? "fixed z-[51] duration-300 py-5 md:py-0 transition-all md:relative top-0  md:bg-transparent h-screen md:h-auto w-[180px] md:w-fit left-0 bg-white "
-              : "hidden"
+            ? "fixed z-[51] duration-300 py-5 md:py-0 transition-all md:relative top-0  md:bg-transparent h-screen md:h-auto w-[180px] md:w-fit left-0 bg-white "
+            : "hidden"
             } md:flex text-primary  text-sm font-medium`}
         >
           {routeData?.map(({ path, title }) => (
@@ -127,7 +128,7 @@ const Navbar = ({ currentLanguageCode, languages }) => {
             )}
         </ul>
 
-        <div className="dropdown dropdown-end p-0 hidden md:block">
+        {/* <div className="dropdown dropdown-end p-0 hidden md:block">
           <label tabIndex={0} className="btn bg-transparent outline-none border-none text-white focus:bg-transparent hover:bg-transparent btn-sm"><span className={`fi ${(currentLanguageCode === "bn" && "fi-bd") || (currentLanguageCode === "en" && "fi-us")}`}></span><span className="pl-1 text-black">{(currentLanguageCode === "bn" && "Bangla") || (currentLanguageCode === "en" && "English")}</span></label>
           <ul tabIndex={0} className="dropdown-content text-sm z-[1] menu p-1 shadow bg-base-100 rounded">
             {languages?.map(({ code, name, flag }) => (
@@ -138,21 +139,23 @@ const Navbar = ({ currentLanguageCode, languages }) => {
               </li>
             ))}
           </ul>
-        </div>
+        </div> */}
 
-        {user?.email ? (
-          <div onClick={() => signOut(Cookies.remove("accessToken"))}>
-            <div className="px-5 lg:px-8 py-1.5 font-semibold text-white rounded-md bg-gradient-to-r from-primary via-secondary to-accent hover:bg-gradient-to-l duration-500 transition-all cursor-pointer">
-              Logout
+        <div className="w-fit h-fit hidden md:inline-block">
+          {user?.email ? (
+            <div onClick={() => signOut(Cookies.remove("accessToken"))}>
+              <div className="px-5 lg:px-8 py-1.5 font-semibold text-white rounded-md bg-gradient-to-r from-primary via-secondary to-accent hover:bg-gradient-to-l duration-500 transition-all cursor-pointer">
+                Logout
+              </div>
             </div>
-          </div>
-        ) : (
-          <Link href="/signin">
-            <div className="px-5 lg:px-8 py-1.5 font-semibold text-white rounded-md bg-gradient-to-r from-primary via-secondary to-accent hover:bg-gradient-to-l duration-500 transition-all cursor-pointer">
-              Login
-            </div>
-          </Link>
-        )}
+          ) : (
+            <Link href="/signin">
+              <div className="px-5 lg:px-8 py-1.5 font-semibold text-white rounded-md bg-gradient-to-r from-primary via-secondary to-accent hover:bg-gradient-to-l duration-500 transition-all cursor-pointer">
+                Login
+              </div>
+            </Link>
+          )}
+        </div>
       </div>
     </div>
   );
