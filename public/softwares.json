@@ -9,7 +9,7 @@
         "price": 19.99,
         "license_type": "Subscription",
         "download_link": "https://example.com/download/adobe-photoshop",
-        "image_url": "https://example.com/images/adobe-photoshop.jpg"
+        "image_url": "https://i.ibb.co/LQBMz7F/Adobe-Photoshop-CC-icon-svg.png"
     },
     {
         "id": 2,
@@ -21,7 +21,7 @@
         "price": 129.99,
         "license_type": "Perpetual",
         "download_link": "https://example.com/download/microsoft-windows",
-        "image_url": "https://example.com/images/microsoft-windows.jpg"
+        "image_url": "https://i.ibb.co/t86WCgN/windows-7-icon-32120.png"
     },
     {
         "id": 3,
@@ -33,7 +33,7 @@
         "price": 29.95,
         "license_type": "Perpetual",
         "download_link": "https://example.com/download/idm",
-        "image_url": "https://example.com/images/idm.jpg"
+        "image_url": "https://i.ibb.co/w4YybhS/internet-downloaad-manager.jpg"
     },
     {
         "id": 4,
@@ -45,7 +45,7 @@
         "price": 0,
         "license_type": "Open Source",
         "download_link": "https://example.com/download/vs-code",
-        "image_url": "https://example.com/images/vs-code.jpg"
+        "image_url": "https://i.ibb.co/ts146pf/visual-studio-code-logo-png-transparent.png"
     },
     {
         "id": 5,
@@ -57,7 +57,7 @@
         "price": 0,
         "license_type": "Freeware",
         "download_link": "https://example.com/download/google-chrome",
-        "image_url": "https://example.com/images/google-chrome.jpg"
+        "image_url": "https://i.ibb.co/sQyqBTn/chrome-new-icon-4.png"
     },
     {
         "id": 6,
@@ -69,7 +69,7 @@
         "price": 0,
         "license_type": "Open Source",
         "download_link": "https://example.com/download/mozilla-firefox",
-        "image_url": "https://example.com/images/mozilla-firefox.jpg"
+        "image_url": "https://i.ibb.co/JkMqKnt/firefox-logo-0.png"
     },
     {
         "id": 7,
@@ -81,7 +81,7 @@
         "price": 0,
         "license_type": "Freeware",
         "download_link": "https://example.com/download/whatsapp",
-        "image_url": "https://example.com/images/whatsapp.jpg"
+        "image_url": "https://i.ibb.co/GF3ZxTr/whatsapp-mobile-software.png"
     },
     {
         "id": 8,
@@ -93,6 +93,6 @@
         "price": 0,
         "license_type": "Freeware",
         "download_link": "https://example.com/download/onedrive",
-        "image_url": "https://example.com/images/onedrive.jpg"
+        "image_url": "https://i.ibb.co/80HRtbJ/One-Drive-Symbol.png"
     }
 ]

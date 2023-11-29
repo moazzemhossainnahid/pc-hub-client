@@ -12,8 +12,7 @@ const SoftwaresCard = ({ software }) => {
         <div className="">
           <div>
             <Image
-              src={`https://e7.pngegg.com/pngimages/837/666/png-clipart-windows-7-microsoft-operating-systems-computer-software-microsoft-text-computer.png`}
-            //   src={software?.image_url}
+              src={software?.image_url}
               alt="course1"
               width={500}
               height={400}
@@ -74,8 +73,11 @@ const SoftwaresCard = ({ software }) => {
                   <del>&#2547; {software?.price}</del>
                 </p>
               )}
-              <p className="font-semibold text-base text-secondary">
+              {/* <p className="font-semibold text-base text-secondary">
                 &#2547; {software?.price - software?.discountPrice}
+              </p> */}
+              <p className="font-semibold text-base text-secondary">
+                &#2547; {`0.00`}
               </p>
             </div>
           </div>
