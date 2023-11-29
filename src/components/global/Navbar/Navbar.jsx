@@ -144,13 +144,13 @@ const Navbar = ({ currentLanguageCode, languages }) => {
         <div className="w-fit h-fit hidden md:inline-block">
           {user?.email ? (
             <div onClick={() => signOut(Cookies.remove("accessToken"))}>
-              <div className="px-5 lg:px-8 py-1.5 font-semibold text-white rounded-md bg-gradient-to-r from-primary via-secondary to-accent hover:bg-gradient-to-l duration-500 transition-all cursor-pointer">
+              <div className="px-5 lg:px-8 py-1.5 font-semibold text-white rounded-md bg-gradient-to-r from-primary via-secondary to-accent  hover:from-accent hover:to-primary duration-300 transition-all cursor-pointer">
                 Logout
               </div>
             </div>
           ) : (
             <Link href="/signin">
-              <div className="px-5 lg:px-8 py-1.5 font-semibold text-white rounded-md bg-gradient-to-r from-primary via-secondary to-accent hover:bg-gradient-to-l duration-500 transition-all cursor-pointer">
+              <div className="px-5 lg:px-8 py-1.5 font-semibold text-white rounded-md bg-gradient-to-r from-primary via-secondary to-accent  hover:from-accent hover:to-primary duration-300 transition-all cursor-pointer">
                 Login
               </div>
             </Link>

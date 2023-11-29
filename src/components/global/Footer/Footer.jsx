@@ -30,9 +30,7 @@ const Footer = () => {
           ></Image>
           <p className="text-sm">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi
-            maxime eos ducimus fuga, voluptatum laudantium nihil consequuntur
-            aliquam mollitia assumenda aliquid culpa sed dolorum doloribus
-            nulla.
+            maxime eos ducimus fuga, voluptatum laudantium.
           </p>
           {/* social link */}
           <div className="flex items-center gap-2 cursor-pointer">

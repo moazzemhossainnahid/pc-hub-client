@@ -1,4 +1,7 @@
-import React from "react";
+"use client";
+
+import SearchBar from "@/components/global/SearchBar/SearchBar";
+import React, { useEffect, useState } from "react";
 
 
 export const metadata = {
@@ -7,10 +10,65 @@ export const metadata = {
 };
 
 const SoftwaresPage = () => {
-  return (
-    <>
+  // const [blogs, setBlogs] = useState(blogList);
+  const [searchKey, setSearchKey] = useState('');
+  const [filteredBlogs, setFilteredBlogs] = useState([]);
+  const [allBlogs, setAllBlogs] = useState([]);
 
-    </>
+  useEffect(() => {
+    fetch('https://abc-publications-server-ii.vercel.app/api/v1/posts')
+      .then(res => res.json())
+      .then(data => setAllBlogs(data.filter(b => b?.status === 'approve')))
+  }, [])
+
+  useEffect(() => {
+    setFilteredBlogs(allBlogs)
+  }, [allBlogs])
+
+
+
+  // Search submit
+  const handleSearchBar = (e) => {
+    e.preventDefault();
+    handleSearchResults();
+  };
+
+  // const allBlogs = blg && blg?.filter(b => b?.status === 'approve');
+
+  // console.log(allBlogs);
+
+  // Search for blog by category
+  const handleSearchResults = () => {
+    // console.log(searchKey.length);
+    if (searchKey.length > 0) {
+      const result = allBlogs.filter((blog) =>
+        blog.category.toLowerCase().includes(searchKey.toLowerCase().trim()) ||
+        blog.title.toLowerCase().includes(searchKey.toLowerCase().trim())
+      );
+      setFilteredBlogs(result);
+    } else {
+      setFilteredBlogs(allBlogs)
+    }
+
+  };
+
+  // Clear search and show all blogs
+  const handleClearSearch = () => {
+    setSearchKey('');
+    // console.log("clear");
+    setFilteredBlogs(allBlogs);
+  };
+  return (
+    <div className="">
+
+      {/* Search Bar */}
+      <SearchBar
+        value={searchKey}
+        clearSearch={handleClearSearch}
+        formSubmit={handleSearchBar}
+        handleSearchKey={(e) => setSearchKey(e.target.value)}
+      />
+    </div>
   );
 };
 
