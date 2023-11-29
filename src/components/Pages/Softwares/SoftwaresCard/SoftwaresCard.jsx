@@ -1,9 +1,8 @@
 "use client";
 import Image from "next/image";
 import React from "react";
-import { FaMedapps, FaRegClock, FaRegStar, FaStar } from "react-icons/fa";
-import { BsBook, BsPerson } from "react-icons/bs";
-import Rating from "react-rating";
+import { FaMedapps } from "react-icons/fa";
+import { BsBook } from "react-icons/bs";
 import Link from "next/link";
 
 const SoftwaresCard = ({ software }) => {
@@ -13,7 +12,8 @@ const SoftwaresCard = ({ software }) => {
         <div className="">
           <div>
             <Image
-              src={software?.thumbnail}
+              src={`https://e7.pngegg.com/pngimages/837/666/png-clipart-windows-7-microsoft-operating-systems-computer-software-microsoft-text-computer.png`}
+            //   src={software?.image_url}
               alt="course1"
               width={500}
               height={400}
@@ -23,56 +23,35 @@ const SoftwaresCard = ({ software }) => {
           {/* card body */}
           <div className="px-3 py-2 pt-3 h-fit">
             <div className="flex items-center gap-2">
-              <Rating
-                emptySymbol={<FaRegStar className="text-yellow-400" />}
-                fullSymbol={<FaStar className="text-yellow-400" />}
-                fractions={2}
-                initialRating={software?.rating?.total_rating}
-                readonly
-              />
-              <p className="text-sm text-gray-500">
-                ({software?.rating?.total_rating})
-              </p>
+
             </div>
             <h1 className="text-sm sm:text-base font-semibold text-gray-600 mt-1">
-              {software?.title}
+              {software?.name}
             </h1>
           </div>
         </div>
         <div className="mt-4 lg:mt-6 pb-3.5 px-3 ">
-          <div className="flex items-center gap-1.5 md:gap-3 pb-2.5 border-b">
+          <div className="flex items-center justify-between gap-1.5 md:gap-3 pb-2.5 border-b">
             <div className="flex items-center gap-1 sm:gap-1.5">
               <BsBook className="text-secondary w-3.5 h-3.5"></BsBook>
               <p className="text-xs text-gray-500 font-medium">
-                {software?.totalLessons} Lessons
-              </p>
-            </div>
-            <div className="flex items-center gap-1 sm:gap-1.5">
-              <FaRegClock className="text-secondary w-3.5 h-3.5"></FaRegClock>
-              <p className="text-xs text-gray-500 font-medium">
-                {software?.duration}
+                {software?.category}
               </p>
             </div>
             <div className="flex items-center gap-1 sm:gap-1.5">
               <FaMedapps className="text-secondary w-3.5 h-3.5"></FaMedapps>
               <p className="text-xs text-gray-500 font-medium">
-                {software?.type}
-              </p>
-            </div>
-            <div className="flex items-center gap-1 sm:gap-1.5">
-              <BsPerson className="text-secondary w-3.5 h-3.5"></BsPerson>
-              <p className="text-xs text-gray-500 font-medium">
-                {software?.totalEnrolled}
+                {software?.version}
               </p>
             </div>
           </div>
-          {/* instructor profile */}
+          {/* publisher profile */}
           <div className="mt-2 flex items-center justify-between">
             <div className="flex items-center gap-1 md:gap-2">
               <div className="w-[35px] h-[35px] rounded-full overflow-hidden border border-secondary">
                 <Image
                   src={
-                    software?.instructor?.profileImg ||
+                    software?.publisher?.profileImg ||
                     "https://i.ibb.co/VJ0rnsr/default-avatar-profile-icon-of-social-media-user-vector.jpg"
                   }
                   alt="profile"
@@ -83,9 +62,9 @@ const SoftwaresCard = ({ software }) => {
               </div>
               <div className="flex flex-col">
                 <h4 className="text-gray-600 text-sm font-semibold">
-                  {software?.instructor?.name}
+                  {software?.publisher}
                 </h4>
-                <span className="text-[12px] text-gray-500">Instructor</span>
+                <span className="text-[12px] text-gray-500">Publisher</span>
               </div>
             </div>
             {/* price here */}

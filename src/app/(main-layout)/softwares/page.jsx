@@ -1,6 +1,8 @@
 "use client";
 
+import Softwares from "@/components/Pages/Softwares/Softwares/Softwares";
 import SearchBar from "@/components/global/SearchBar/SearchBar";
+import Spinner from "@/components/global/Spinner/Spinner";
 import React, { useEffect, useState } from "react";
 
 
@@ -10,20 +12,19 @@ export const metadata = {
 };
 
 const SoftwaresPage = () => {
-  // const [blogs, setBlogs] = useState(blogList);
   const [searchKey, setSearchKey] = useState('');
-  const [filteredBlogs, setFilteredBlogs] = useState([]);
-  const [allBlogs, setAllBlogs] = useState([]);
+  const [filteredSoftwares, setFilteredSoftwares] = useState([]);
+  const [allSoftwares, setAllSoftwares] = useState([]);
 
   useEffect(() => {
-    fetch('https://abc-publications-server-ii.vercel.app/api/v1/posts')
+    fetch('/softwares.json')
       .then(res => res.json())
-      .then(data => setAllBlogs(data.filter(b => b?.status === 'approve')))
+      .then(data => setAllSoftwares(data))
   }, [])
 
   useEffect(() => {
-    setFilteredBlogs(allBlogs)
-  }, [allBlogs])
+    setFilteredSoftwares(allSoftwares)
+  }, [allSoftwares])
 
 
 
@@ -33,21 +34,18 @@ const SoftwaresPage = () => {
     handleSearchResults();
   };
 
-  // const allBlogs = blg && blg?.filter(b => b?.status === 'approve');
 
-  // console.log(allBlogs);
-
-  // Search for blog by category
+  // Search for software by category
   const handleSearchResults = () => {
     // console.log(searchKey.length);
     if (searchKey.length > 0) {
-      const result = allBlogs.filter((blog) =>
-        blog.category.toLowerCase().includes(searchKey.toLowerCase().trim()) ||
-        blog.title.toLowerCase().includes(searchKey.toLowerCase().trim())
+      const result = allSoftwares?.filter((software) =>
+        software?.category.toLowerCase().includes(searchKey.toLowerCase().trim()) ||
+        software?.name.toLowerCase().includes(searchKey.toLowerCase().trim())
       );
-      setFilteredBlogs(result);
+      setFilteredSoftwares(result);
     } else {
-      setFilteredBlogs(allBlogs)
+      setFilteredSoftwares(allSoftwares)
     }
 
   };
@@ -56,7 +54,7 @@ const SoftwaresPage = () => {
   const handleClearSearch = () => {
     setSearchKey('');
     // console.log("clear");
-    setFilteredBlogs(allBlogs);
+    setFilteredSoftwares(allSoftwares);
   };
   return (
     <div className="">
@@ -68,6 +66,9 @@ const SoftwaresPage = () => {
         formSubmit={handleSearchBar}
         handleSearchKey={(e) => setSearchKey(e.target.value)}
       />
+
+      {/* Softwares List & Empty View */}
+      {!filteredSoftwares?.length ? <Spinner /> : <Softwares softwares={filteredSoftwares} />}
     </div>
   );
 };

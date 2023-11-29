@@ -6,6 +6,7 @@ const nextConfig = {
         "res.cloudinary.com",
         "lh3.googleusercontent.com",
         "i.pinimg.com",
+        "e7.pngegg.com",
       ],
     },
   };
